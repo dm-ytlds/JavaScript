@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>类的创建和使用</title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			/* // 创建对象
+			function User(a, b, c) {
+				// 类中有三个属性
+				this.sno = a;
+				this.sname = b;
+				this.sage = c;
+			}
+			// 实例化对象
+			var user = new User(001, "zs", 22);
+			// 调用对象中的属性
+			alert("userNo = " + user.sno);
+			alert("userName = " + user.sname);
+			alert("userAge = " + user.sage); */
+			
+			// 在类中定义函数
+			MyClass = function(pno, pname, price) {
+				this.pno = pno;
+				this.pname = pname;
+				this.price = price;
+				// 定义函数
+				this.getPrice = function() {
+					return this.price;
+				}
+			}
+				// 实例化对象
+				var myclass = new MyClass(001, "apple", 10);
+				// 调用函数
+				var pri = myclass.getPrice();
+				alert(pri);
+				
+				var orig = new MyClass(002, "oringe", 2.0);
+				MyClass.prototype.getPname = function(){
+					return this.pname;
+				}
+				var pname = orig.getPname();
+				alert(pname);
+		</script>
+	</body>
+</html>

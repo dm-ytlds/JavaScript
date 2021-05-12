@@ -65,3 +65,119 @@ HTML中有三种方式引入JS代码。参考html文件。
 </html>
 ```
 
+JavaScript是一种弱类型的编程语言。
+JS中声明变量的方式：
+	var 变量名;
+在JS中，当一个变量没有手动赋值，系统会默认赋值undefined
+
+JS中的函数不需要指定返回值类型。
+
+语法格式：
+
+```javascript
+第一种格式：
+	function 函数名(形式参数列表) {
+		函数体;
+	}
+第二种方式：
+	函数名 = function(形式参数列表) {
+		函数体;
+	}
+```
+
+NaN是一个具体存在的值，该值表示不是一个数字。
+
+JS中不存在函数重载，同名函数会出现覆盖的情况，同名的只有最后一个函数才会起作用。
+
+JS中的数据类型
+
+​	虽然在声明变量的时候不用指定数据类型，但是在赋值的时候还是有类型的。
+
+​	1.JS中数据类型有：原始类型和引用类型。
+
+​		原始类型：Undefined, Number, String, Boolean, Null
+
+​		引用类型：Object以及Object的子类。
+
+​	2.ES规范（ECMAScript规范），在ES6之后，又基于以上的6中数据类型之外添加了一种新的s类型：Symbol
+
+​	3.JS中有一个运算符叫做：typeof，这个运算符可以在程序的运行阶段动态的获取变量的数据类型。
+
+​		typeof运算符的语法格式：
+​			typeof 变量名
+
+​		typeof运算符的运算结果是以下6个字符串之一：注意字符串全部都是小写。
+
+​			"undefined" "number" "string" "boolean" "object" "function"
+
+​		在JS中比较字符串是否相等只有 ==， 没有equal
+
+​	4.数据类型
+
+​		4.1 注意：var i;和var i = undefined 是一回事，而var = "undefined" 是string类型。
+
+​		4.2 Number类型包括哪些值？
+
+​			整数、小数、正数、负数、不是数字（NaN）、无穷大（Infinity）都属于Number类型。
+
+​			！什么情况下会出现NaN？
+​			运算结果本应该是一个数字，最后算完不是一个数字的时候，结果就会返回NaN。
+
+​	isNaN函数： isNaN：is Not a Number 。
+
+​		用法：isNaN(数据)，结果是true表示不是一个数字，结果是false表示是一个数字。
+
+​	parseInt()：可以将字符串自动转换成数字，并且取整数位。
+
+​	parseFloat()：可以将字符串自动转换成小数。
+
+​	Math.ceil("数字")：向上取整。
+
+​		JS中的布尔类型永远只有2个值：true和false。
+
+​		在Boolean类型中有一个Boolean()函数。作用：将非布尔类型转换成布尔类型。
+
+​		！！！对于JS，在判断语句的小括号中（if()），如果不是布尔类型，系统会自动调用Boolean()函数转换成布尔类型。
+
+​		String是一个内置类，可以直接使用，String的父类是Object 。
+
+​		"字符串a".indexof("字符串b");  // 字符串a中是否包含字符串b
+
+​		考点：substr和substring的区别？
+
+​			substr(startIndex, length);
+
+​			substring(startIndex, endIndex); 不包含endIndex
+
+​	Object类型
+
+​			Object是所有类型的超类，自定义类型默认继承该类，
+
+​			Object类包括哪些属性？
+
+​				prototype（常用这个），作用：给类动态的扩展属性和函数。
+
+​				constructor 属性。
+
+​			Object类包括哪些函数？
+
+​				toString(), valueOf(), toLocalString()
+
+​		创建类：
+
+​		语法格式：
+
+```javascript
+第一种格式：
+	function 函数名(形式参数列表) {
+		函数体;
+	}
+第二种方式：
+	函数名 = function(形式参数列表) {
+		函数体;
+	}
+创建类和函数的区别？
+	调用的时候，用new 函数名()，就是当做一个类来处理；
+如果直接函数名()，则是当做一个函数来使用。
+```
+

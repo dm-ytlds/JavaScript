@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			/*
+				JS中有一个运算符叫做：typeof，这个运算符可以在程序的运行阶段动态的获取变量的数据类型。
+				
+				​		typeof运算符的语法格式：
+				​			typeof 变量名
+				
+				​		typeof运算符的运算结果是以下6个字符串之一：注意字符串全部都是小写。
+				
+				​			"undefined" "number" "string" "boolean" "object" "function"
+				
+				​		在JS中比较字符串是否相等只有 ==， 没有equal
+			*/
+		   function add(a, b) {
+			   if(typeof a == "number" && typeof b == "number") {
+				   return a + b;
+			   }
+			   alert("a b 必须都是数字");
+		   }
+		   add();
+		   add(1, "a");
+		   alert(add(1, 2));
+		   
+		   // 6种数据类型的测试
+		   var i;
+		   alert(typeof i); // undefined
+		   
+		   var j = 10;
+		   alert(typeof j); // number
+		   
+		   var k = "a";
+		   alert(typeof k); // string
+		   
+		   var l = null;
+		   alert(typeof l); // object
+		   
+		   var m = false;
+		   alert(typeof m); // boolean
+		   
+		   var obj = new Object();
+		   alert(typeof obj);// boolean
+		   
+		   alert(typeof add);// function
+		</script>
+	</body>
+</html>
