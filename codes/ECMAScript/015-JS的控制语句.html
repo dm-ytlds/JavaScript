@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>JS的控制语句</title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			function User(username, password){
+				this.username = username;
+				this.password = password;
+			}
+			var user = new User("zs", 1233);
+			// for...in的第二种用法：遍历对象的属性
+			for(var attr in user) {
+				alert(user[attr]);
+			}
+			
+			// with(){}函数的用法:小括号中的参数如果放的是对象名，就会自动遍历对象的相关属性值
+			with(user) {
+				alert(username + ", " + password);
+			}
+		</script>
+	</body>
+</html>

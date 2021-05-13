@@ -42,6 +42,12 @@
 				}
 				var pname = orig.getPname();
 				alert(pname);
+				
+				// prototype的使用
+				String.prototype.func = function() {
+					alert("print it ");
+				}
+				"abc".func();
 		</script>
 	</body>
 </html>

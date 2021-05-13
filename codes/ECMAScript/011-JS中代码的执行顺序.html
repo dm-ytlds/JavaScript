@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>onload的用法</title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			// 用window.onload 调用load事件，等整个页面加载完毕该事件才会发生。
+			// 页面加载过程中，将回调函数 a 注册给load事件
+			// 页面加载完毕后，load事件执行回调函数 a
+			// 回调函数a执行过程中，把b函数注册给了id="btn"的click事件
+			// 当id="btn"的节点发生click事件之后，b函数被调用并执行
+			window.onload = function(){  // 回调函数 a 
+				document.getElementById("btn").onclick = function(){  // 回调函数 b
+					alert("How to use JS' onload and onclick")
+				};
+				
+			}
+		</script>
+		<input type="button" value="mybtn" id="btn"/>
+	</body>
+</html>

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>JS代码捕捉回车键</title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			// load事件：全部元素执行完成后才执行onload事件句柄中的代码
+			window.onload = function(){
+				// keydown事件：键盘按下事件，
+				// 对于JS来说，键盘上每一个键都对应一个keyCode值，比如Enter的keyCode是13，Esc的keyCode是27
+				// 注意：必须通过document.getElementById("mytext")来定位你要捕捉的是哪一个文本框。
+				document.getElementById("password").onkeydown = function(event) {
+					if(event.keyCode === 13) {
+						alert("正在验证");
+					}
+				}
+			}
+		</script>
+		<input type="text" id="username" /><br />
+		<input type="password" id="password" />
+	</body>
+</html>

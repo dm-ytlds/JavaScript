@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>获取文本框的value</title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			/* window.onload = function(){
+				
+				window.document.getElementById("mybtn01").onclick = function(){
+					// 获取文本框的value
+					var usernameEb01 = window.document.getElementById("username01").value;
+					alert(usernameEb01);
+				}
+				
+			} */
+			
+			// 将获取到的value赋值给另外的文本框
+			window.onload = function(){
+				// 将获取到的value赋值给另外的文本框
+				window.document.getElementById("mybtn02").onclick = function(){
+					// var usernameEb01 = window.document.getElementById("username01").value;
+					window.document.getElementById("username02").value = window.document.getElementById("username01").value;
+				}
+			}
+				
+		</script>
+		<input type="text" id="username01" />
+		<!-- <input type="button" name="btn01" id="mybtn01" value="获取文本框的value" /> -->
+		<br>
+		<input type="text" id="username02" />
+		<input type="button" id="mybtn02" value="获得value值" />
+	</body>
+</html>

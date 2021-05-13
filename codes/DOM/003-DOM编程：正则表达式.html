@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>DOM编程：正则表达式</title>
+	</head>
+	<body>
+		<!-- 正则表达式的作用？
+		主要用来字符串格式匹配方面。正则表达式实际上是一门独立的学科，所有的编程语言都可以用。 -->
+		<script type="text/javascript">
+			/* 
+			| 符号 |             描述              |
+			| :--: | :--------------------------: |
+			|  .   | 匹配除换行符以外得我任意字符    |
+			|  \w  | 匹配字母或数字或下划线或汉字    |
+			|  \s  |        匹配任意空白符        |
+			|  \d  |           匹配数字           |
+			|  \b  |     匹配单词的开始或结束     |
+			|  ^   |       匹配字符串的开始       |
+			|  $   |       匹配字符串的结束       | 
+			
+			简单的正则表达式：
+				
+			 */
+			// 案例：实现邮箱验证
+			window.onload = function(){
+				// 给按钮绑定click事件
+				window.document.getElementById("btn").onclick = function(){
+					var email = window.document.getElementById("email").value;
+					// 正则表达式
+					var regExp = /^([a-zA-Z]|[0-9])(\w|\-)+@[a-zA-Z0-9]+\.([a-zA-Z]{2,4})$/;
+					var ok = regExp.test(email);
+					if(!ok) {
+						document.getElementById("emailError").innerText = "邮箱地址不合法";
+						// 给文本框绑定focus事件
+						window.document.getElementById("email").onfocus = function(){
+							// 提示内容消失
+							document.getElementById("emailError").innerText = "";
+							// 邮箱格式错误，再次点击文本框，内容消失
+							document.getElementById("email").onclick(this.value="");
+						}
+						
+					}else{
+						document.getElementById("emailCurrent").innerText = "邮箱地址合法";
+						window.document.getElementById("email").onfocus = function(){
+							document.getElementById("emailCurrent").innerText = "";
+							// 再次点击文本框，内容消失
+							document.getElementById("email").onclick(this.select());
+						}
+					}
+					
+				}
+				/* window.document.getElementById("email").onfocus = function(){
+					document.getElementById("emailError").innerText = "";
+				} */
+			}
+			
+		</script>
+		<input type="text" id="email" />
+		<span id="emailError" style="color: red; font-size: 0.75rem;"></span>
+		<span id="emailCurrent" style="color: green; font-size: 0.75rem;"></span>
+		<br />
+		<input type="button" id="btn" value="验证邮箱"/>
+	</body>
+</html>
