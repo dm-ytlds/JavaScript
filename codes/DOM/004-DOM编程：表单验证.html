@@ -14,8 +14,163 @@
 	<head>
 		<meta charset="utf-8">
 		<title>DOM编程：表单验证</title>
+		<style type="text/css">
+			span{
+				color: red;
+				font-size: 12px;
+			}
+			.a{
+				width: 300px;
+				height: 30px;
+				             
+			}
+			#b{
+			    width: 500px;
+			    border: 1px red;
+			    text-align: right;        /*右对齐*/·
+			}
+			input{
+			    border: 1px solid #ccc;
+			    padding: 7px 0px;
+			    border-radius: 3px;
+			    padding-left:5px;
+			    -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+			    box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+			    -webkit-transition: border-color ease-in-out .15s,-webkit-box-shadow ease-in-out .15s;
+			    -o-transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+			    transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s
+			}
+			input:focus{
+			    border-color: #66afe9;
+			    outline: 0;
+			    -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075),0 0 8px rgba(102,175,233,.6);
+			    box-shadow: inset 0 1px 1px rgba(0,0,0,.075),0 0 8px rgba(102,175,233,.6)
+			}
+		</style>
 	</head>
 	<body>
+		<script type="text/javascript">
+			window.onload = function(){
+				// 初始化用户错误信息、密码错误信息、邮箱错误信息
+				var usernameError = window.document.getElementById("usernameError");
+				var passwordError = window.document.getElementById("passwordError");
+				var emailError = window.document.getElementById("emailError");
+				// 处理用户名
+				// 获取用户名文本框
+				var usernameEbi = window.document.getElementById("username");
+				
+				// 给用户名文本框添加blur事件
+				usernameEbi.onblur = function(){
+					// 测试代码
+					// alert(111);
+					// 验证用户名是否为空
+					// 通过window.document.getElementById("username").value获取用户名，并用trim()方法去除前后空白
+					var username = usernameEbi.value.trim();
+					
+					if(username.length == 0) {
+						// 用户名为空
+						usernameError.innerText = "用户名不能为空";
+					}else{
+						// 用户名不为空
+						// 用户名长度判断合法性
+						if(username.length < 6 || username.length > 14) {
+							usernameError.innerText = "用户名长度必须在[6-14]之间";
+						}else{
+							// 正则化用户名
+							var regExp = /^[A-Za-z0-9]+$/;
+							var legal = regExp.test(username);
+							if(legal) {
+								
+							}else{
+								usernameError.innerText = "用户名中只能由数字和字母组成";
+							}
+						}
+
+					}
+					
+					
+				}
+				// 给username文本框添加focus事件
+				usernameEbi.onfocus = function(){
+					if(usernameError.innerText != ""){
+						// 如果有错误提示信息，说明用户名不合法，清空文本框内容
+						usernameEbi.value = "";
+					}
+					// 清空错误提示信息
+					usernameError.innerText = "";
+					// 文本框内容全选
+					// usernameEbi.onclick(this.select());
+				}
+				
+				// 获取确认密码文本框
+				var userPwdEbi = window.document.getElementById("password02");
+				// 给确认密码文本框绑定blur事件
+				userPwdEbi.onblur = function(){
+					// 获取密码和确认密码文本内容
+					var userPwd01 = window.document.getElementById("password01").value;
+					var userPwd02 = userPwdEbi.value;
+					if(userPwd01 != userPwd02) {
+						// 提示确认密码和密码不一致
+						passwordError.innerText = "两次输入的密码不一致";
+					}
+				}
+				// 给确认密码文本框绑定focus事件
+				userPwdEbi.onfocus = function(){
+					if(passwordError.innerText != "") {
+						// 清空文本内容
+						userPwdEbi.value = "";
+					}
+					// 清空错误提示信息
+					passwordError.innerText = "";
+				}
+				
+				// 获取邮箱文本框
+				var emailEbi = window.document.getElementById("email");
+				// 给邮箱文本框绑定blur事件
+				emailEbi.onblur = function(){
+					// 正则表达式
+					var emailregExp = /^([a-zA-Z]|[0-9])(\w|\-)+@[a-zA-Z0-9]+\.([a-zA-Z]{2,4})$/;
+					var isRight = emailregExp.test(emailEbi.value);
+					if(isRight) {
+						// 邮箱合法
+					}else{
+						// 邮箱不合法
+						emailError.innerText = "邮箱地址不合法";
+					}
+				}
+				// 给邮箱文本框绑定focus事件
+				emailEbi.onfocus = function(){
+					if(emailError.innerText != ""){
+						emailEbi.value = "";
+					}
+					emailError.innerText = "";
+				}
+				// 所有文本均合法才能提交
+				window.document.getElementById("register").onclick = function(){
+					usernameEbi.focus();
+					usernameEbi.blur();
+					userPwdEbi.focus();
+					userPwdEbi.blur();
+					emailEbi.focus();
+					emailEbi.blur();
+					if(usernameError.innerText == "" && passwordError.innerText == "" && emailError.innerText == ""){
+						var userform = window.document.getElementById("user-form");
+						userform.submit();
+					}
+				}
+			}
+			
+		</script>
+		<div id="b">
+			<form id="user-form" action="http://localhost:8080/tb/save" method="get">
+				用户名：<input type="text" name="username" id="username" placeholder="请输入用户名" class="a" /><span id="usernameError"></span><br />
+				密码：<input type="password" name="password01" id="password01" placeholder="请输入用户密码" class="a" /><br />
+				确认密码：<input type="password" name="password02" id="password02" class="a" /><span id="passwordError"></span><br />
+				邮箱：<input type="text" name="email" id="email" placeholder="邮箱地址" class="a" /><span id="emailError"></span><br /> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				<input id="register" type="button" value="注册" /> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				<input type="reset" value="重置" />
+			</form>
+		</div>
 		
 	</body>
 </html>

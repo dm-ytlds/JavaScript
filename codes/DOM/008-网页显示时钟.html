@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>网页显示时钟</title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			/* var time = new Date();
+			// 快速转换成本地时间
+			nowTime = time.toLocaleString();
+			// 网页端的输出方式：document.write(变量名);
+			document.write(nowTime); */
+			// 如果转换的时间格式不符合要求，可以自定义时间输出格式
+			var time = new Date();
+			var year = time.getFullYear(); // 获取年份
+			// document.write(year);
+			var month = time.getMonth(); // 获取月份。注意：月份是从0-11
+			// document.write(month);
+			// var dayOfWeek = time.getDay();  // 获取的是一周中的第几天（0-6：其中0表示星期日）
+			var day = time.getDate();  // 获取日信息
+			// document.write(day);
+			document.write(year + "年" + (month+1) + "月" + day + "日");
+			document.write("<br>");
+			document.write("<br>");
+			// 重点：怎么获取系统的毫秒数？
+			//	获取毫秒数的作用：当做时间戳，计算时间差。
+			// var times = time.getTime();
+			// document.write(times);
+			
+			// 毫秒数作用的简单案例：获取系统当前时间，并持续显示
+			function currentTime(){
+				var timeDiv = window.document.getElementById("timeDiv");
+				timeDiv.innerHTML = (new Date()).toLocaleString();
+			}
+			var start = function(){
+				// 变量前不加var，表示是全局变量
+				// window.setInterval("code", 毫秒数)：间隔固定周期（毫秒数）执行code（多为函数）
+				interval = window.setInterval("currentTime()", 1000);
+			}
+			var stop = function(){
+				// 取消window.setInterval()的周期性计划
+				window.clearInterval(interval);
+			}
+		</script>
+		
+		<input type="button" id="btn01" value="查看系统当前时间" onclick="start();" />
+		<input type="button" id="btn02" value="停止显示当前时间" onclick="stop();" />
+		<div id="timeDiv">
+			
+		</div>
+	</body>
+</html>

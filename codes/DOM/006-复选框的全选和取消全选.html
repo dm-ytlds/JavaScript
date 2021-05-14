@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>复选框的全选和取消全选</title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			// 窗口（html文档）绑定load事件
+			window.onload = function(){
+				// 定位firstChk复选框
+				var firstChk = document.getElementById("firstChk");
+				// firstChk复选框绑定click事件
+				firstChk.onclick = function(){
+					var hobbies = document.getElementsByName("hobby");
+					/* if(firstChk.checked){
+						// 选中了firstChk复选框
+						// 全选
+						for (var i = 0; i < hobbies.length; i++) {
+							hobbies[i].checked = true;
+						}
+					}else{
+						// 取消全选
+						for (var i = 0; i < hobbies.length; i++) {
+							hobbies[i].checked  = false;
+							
+						}
+					} */
+					
+					// 优化上述代码
+					for (var i = 0; i < hobbies.length; i++) {
+						hobbies[i].checked = firstChk.checked;
+					}
+					
+					// 对复选框进行遍历。如果三个复选框都选中，则选中firstChk复选框
+					for (var i = 0; i < hobbies.length; i++) {
+						hobbies[i].onclick = function(){
+							var checkCount = 0;
+							for (var j = 0; j < hobbies.length; j++) {
+								if(hobbies[j].checked){
+									checkCount++;
+								}
+								
+							}
+							// 如果三个复选框都选中，则选中firstChk复选框
+							firstChk.checked =  (checkCount == hobbies.length);
+						}
+					}
+				}
+				
+				
+			}
+		</script>
+		<input type="checkbox" id="firstChk" />爱好<br>
+		<input type="checkbox" name="hobby" value="eat" />吃饭
+		<input type="checkbox" name="hobby" value="sleep" />睡觉
+		<input type="checkbox" name="hobby" value="play" />玩
+	</body>
+</html>
