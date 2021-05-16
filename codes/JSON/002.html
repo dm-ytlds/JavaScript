@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>设置Table的tbody</title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			// 创建JSON对象
+			var data = {
+				"total" : 4,
+				"emps" : [
+					{"empno" : 1016, "ename" : "QQQ00", "sal" : 8000},
+					{"empno" : 1017, "ename" : "QQQ01", "sal" : 9000},
+					{"empno" : 1018, "ename" : "QQQ02", "sal" : 10000},
+					{"empno" : 1019, "ename" : "QQQ03", "sal" : 11000}
+				]
+			};
+			// 将上面的JSON展示在表格中
+			window.onload = function(){
+				window.document.getElementById("btn01").onclick = function(){
+					// alert("aaa");
+					var emps = data.emps;
+					var html = "";
+					for (var i = 0; i < emps.length; i++) {
+						var emp = emps[i];
+						html += "<tr>";
+						html += "<td>" + emp.empno + "</td>";
+						html += "<td>" + emp.ename + "</td>";
+						html += "<td>" + emp.sal + "</td>";
+						html += "</tr>";
+					}
+					document.getElementById("emptbody").innerHTML = html;
+					document.getElementById("count").innerHTML = data.total;
+				}
+			}
+		</script>
+		<input type="button" id="btn01" value="信息展示" />
+		<h2>员工工资信息表</h2>
+		<table border="1" width="50%">
+			<tr>
+				<th>员工编号</th>
+				<th>员工姓名</th>
+				<th>员工工资</th>
+			</tr>
+			<tbody id="emptbody">
+				
+			</tbody>
+		</table>
+		总共<span id="count">0</span>数据。
+		
+	</body>
+</html>

@@ -8,7 +8,7 @@
 
  1.  onclick="js代码"，执行原理是什么？
 
-     页面打开的时候，js代码并不会执行，只是把这段js代码注册到按钮的click事件上了。等这个按钮发生click事件之后，注册在onclick后面dejs代码会被浏览器自动调用。
+     页面打开的时候，js代码并不会执行，只是把这段js代码注册到按钮的click事件上了。等这个按钮发生click事件之后，注册在onclick后面的js代码会被浏览器自动调用。
 
  2.  怎么使用js代码弹出消息框？
 
@@ -44,7 +44,7 @@ HTML中有三种方式引入JS代码。参考html文件。
 
 <body>
 	<script type="text/javascript">
-	/*	注释方式2：用于代码块中
+	/*	注释方式2：用于JS代码块中
 		暴露在脚本块当中的程序，在页面打开的时候执行，
 		并且遵循自上而下的顺序依次逐行执行。
 	*/
@@ -70,7 +70,7 @@ HTML中有三种方式引入JS代码。参考html文件。
 JavaScript是一种弱类型的编程语言。
 JS中声明变量的方式：
 	var 变量名;
-在JS中，当一个变量没有手动赋值，系统会默认赋值undefined
+在JS中，当一个变量没有手动赋值，系统会默认赋值undefined。如果不加var ，那么无论在哪定义该变量，默认为全局变量。
 
 JS中的函数不需要指定返回值类型。
 
@@ -101,7 +101,7 @@ JS中的数据类型
 
 ​		引用类型：Object以及Object的子类。
 
-​	2.ES规范（ECMAScript规范），在ES6之后，又基于以上的6中数据类型之外添加了一种新的s类型：Symbol
+​	2.ES规范（ECMAScript规范），在ES6之后，又基于以上的6种数据类型之外添加了一种新的类型：Symbol
 
 ​	3.JS中有一个运算符叫做：typeof，这个运算符可以在程序的运行阶段动态的获取变量的数据类型。
 
@@ -116,7 +116,7 @@ JS中的数据类型
 
 ​	4.数据类型
 
-​		4.1 注意：var i;和var i = undefined 是一回事，而var = "undefined" 是string类型。
+​		4.1 注意：var i; 和var i = undefined; 是一回事，而var = "undefined"; 是string类型。
 
 ​		4.2 Number类型包括哪些值？
 
@@ -139,7 +139,7 @@ JS中的数据类型
 
 ​		在Boolean类型中有一个Boolean()函数。作用：将非布尔类型转换成布尔类型。
 
-​		！！！对于JS，在判断语句的小括号中（if()），如果不是布尔类型，系统会自动调用Boolean()函数转换成布尔类型。
+​		！！！对于JS，在判断语句的小括号中（例如：if()），如果不是布尔类型，系统会自动调用Boolean()函数转换成布尔类型。
 
 ​		String是一个内置类，可以直接使用，String的父类是Object 。
 
@@ -159,7 +159,7 @@ JS中的数据类型
 
 ​				<font color=#FF00>prototype（常用这个），作用：给类动态的扩展属性和函数。</font>
 
-​				<font color=#FFFF00>例如：String.prototype.函数名=function(){ }; "任意字符串".函数名(); 就是说，给字符串类型扩展一个函数，那么任意的字符串都可以调用该函数。</font>
+​				<font color=#FFAA00>例如：String.prototype.函数名=function(){ }; "任意字符串".函数名(); 就是说，给字符串类型扩展一个函数，那么任意的字符串都可以调用该函数。</font>
 
 ​				constructor 属性。
 
@@ -173,15 +173,17 @@ JS中的数据类型
 
 ```javascript
 第一种格式：
-	function 函数名(形式参数列表) {
-		函数体;
+	function 类名(形式参数列表) {
+		属性;
+         函数;
 	}
 第二种方式：
-	函数名 = function(形式参数列表) {
-		函数体;
+	类名 = function(形式参数列表) {
+		属性;
+         函数;
 	}
 创建类和函数的区别？
-	调用的时候，用new 函数名()，就是当做一个类来处理；
+	调用的时候，用new 类名()，就是当做一个类来处理；
 如果直接函数名()，则是当做一个函数来使用。
 ```
 
@@ -191,29 +193,29 @@ JS中的数据类型
 
 ​	null NaN undefined有什么区别？
 
-​		首先，三者是不同的数据类型（null(oobject) NaN(number) undefined(undefined)）。
+​		首先，三者是不同的数据类型（null(object) NaN(number) undefined(undefined)）。
 
 JS中的事件
 
 ​	常见的事件：
 
-​		blur 失去焦点
-​		focus 获得焦点
+​		blur 失去焦点，发生该事件
+​		focus 获得焦点，发生该事件
 
-​		click 鼠标单击
-​		dblclick 鼠标双击
+​		click 鼠标单击，发生该事件
+​		dblclick 鼠标双击，发生该事件
 
-​		keydown 鼠标按下
-​		keyup 鼠标弹起
+​		keydown 鼠标按下，发生该事件
+​		keyup 鼠标弹起，发生该事件
 
-​		mousedown 鼠标按下
-​		mouseover 鼠标经过
-​		mousemove 鼠标移动
-​		mouseout 鼠标离开
-​		mouseup 鼠标弹起
+​		mousedown 鼠标按下，发生该事件
+​		mouseover 鼠标经过，发生该事件
+​		mousemove 鼠标移动，发生该事件
+​		mouseout 鼠标离开，发生该事件
+​		mouseup 鼠标弹起，发生该事件
 
 ​		reset 表单重置
-​		ubmit 表单提交
+​		submit 表单提交
 
 ​		change 下拉列表选中项改变，或文本框内容改变
 
@@ -253,7 +255,7 @@ JS中的事件
     btnobj1.onclick = do;
     
     var btnobj2 = document.getElementById("mybtn2");
-    // 回调函数的第二种写法
+    // 回调函数的第二种写法：匿名内部类（多用这种方式）
     btnobj2.onclick = function(){
         alert("acbdasfddg...");
     }
@@ -317,7 +319,7 @@ onload 的用法：
 </html>
 ```
 
-​	keydown事件的应用案例：捕捉回车键
+​	keydown事件的应用案例：捕捉回车键keydown
 
 ```html
 <!DOCTYPE html>
@@ -360,7 +362,7 @@ onload 的用法：
 		<title>JS中void运算符</title>
 	</head>
 	<body>
-		<a href="javascript:void(0)" onclick="window.alert('test void(0)')">点击该超链接，页面不会跳转</a>
+		<a href="javascript:void(0)" onclick="window.alert('test javascript:void(0)')">点击该超链接，页面不会跳转</a>
 	</body>
 </html>
 ```
@@ -386,6 +388,8 @@ for(var i in arr) {
 ​	for.. in还可以用于遍历对象属性
 
 ​	with(){} 函数的用法
+
+​		小括号中的参数如果放的是对象名，就会自动遍历对象的相关属性值
 
 ```html
 <!DOCTYPE html>
@@ -560,3 +564,8 @@ for(var i = 0; i < 数组名.length; i++) {
 ​	window.eval()函数的作用：将字符串当做一段JS代码解释并执行。
 
 ​	java连接数据库，查询数据之后，将数据在java程序中拼接成JSON格式的“字符串”，将JSON格式的字符串响应到浏览器。也就是说，java响应到浏览器上的仅仅只是一个“JSON格式的字符串”，还不是一个JSON对象，可以使用eval函数将JSON格式的字符串转换成JSON对象。
+
+JS中，[]和{}的区别？
+
+​	在js中，{}表示JSON对象，[]表示数组。
+
