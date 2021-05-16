@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>confirm的应用：弹出确认框和删除框</title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			function del(){
+				var ok = window.confirm("确认删除吗？");
+				if(ok) {
+					alert("已成功删除!");
+				}else{
+					alert("未删除！");
+				}
+			}
+		</script>
+		<input type="button" name="myBtn" id="btn01" value="消息弹出框" onclick="alert('JS Code');"/>
+		<input type="button" name="myBtn" id="btn02" value="消息确认框" onclick="del();" />
+	</body>
+</html>
